@@ -13,6 +13,7 @@ import WrongNetworkMessage from "../components/WrongNetworkMessage";
 // import TodoTaskAbi from "../backend/build/contracts/TodoTaskContract.json";
 // import { ethers } from "ethers";
 
+
 export default function Home() {
   const {
     correctNetwork,
