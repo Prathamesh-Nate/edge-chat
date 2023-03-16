@@ -1,1 +1,1 @@
-export const ChatContractAddress = "0xB471903F947630C3f51ef5fDc6e435817e33fcA1";
+export const ChatContractAddress = "0x68F446aFC78819d6F4486aB82257cdfF057F65aC";
