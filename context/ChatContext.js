@@ -29,16 +29,16 @@ export const ChatProvider = ({ children }) => {
       }
       let chainId = await ethereum.request({ method: "eth_chainId" });
       console.log("Connected to " + chainId);
-      const rinkebyChainId = "0x5";
-      if (chainId !== rinkebyChainId) {
-        console.log("Please connect to Goerli Test Network");
-        setCorrectNetwork(false);
-        setNetworkError(true);
-        return;
-      } else {
+      const beresheetChainId = "0x7E6";
+      if (chainId !== beresheetChainId) {
         setCorrectNetwork(true);
         setNetworkError(false);
-      }
+        return;
+      } else {
+        console.log("Please connect to Beresheet Test Network");
+        setCorrectNetwork(false);
+        setNetworkError(true);
+      } 
       const accounts = await ethereum.request({
         method: "eth_requestAccounts",
       });
