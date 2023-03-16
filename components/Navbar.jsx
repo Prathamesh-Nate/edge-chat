@@ -7,7 +7,7 @@ const Navbar = () => {
     <div className="navbar">
       <span className="logo">EdgeChat</span>
       <div className="user">
-        <button onClick={logoutUser}>logout</button>
+        <button onClick={logoutUser}>Logout</button>
       </div>
     </div>
   );

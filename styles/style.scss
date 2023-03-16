@@ -165,8 +165,8 @@
           button {
             background-color: #5d5b8d;
             color: #ddddf7;
-            padding: 10px;
-            font-size: 1rem;
+            padding: 11px;
+            font-size: 0.8rem;
             font-weight: bold;
             border: none;
             border-radius: 5%;
@@ -184,6 +184,11 @@
         .searchForm {
           padding: 10px;
 
+          form {
+            display: flex;
+            justify-content: space-between;
+          }
+
           input {
             background-color: transparent;
             border: none;
@@ -196,10 +201,10 @@
             }
           }
           button {
-            background-color: #7b96ec;
-            color: white;
+            background-color: #f9b17a;
+            color: #3e3c61;
             float: right;
-            padding: 0.2rem;
+            padding: 0.4rem;
             width: 25%;
             font-size: 1rem;
             font-weight: bold;
@@ -252,8 +257,14 @@
         justify-content: space-between;
         padding: 10px;
         color: lightgray;
-      }
+        
+        span {
+          font-size: 1.1rem;
+          font-weight: 600;
+          margin: 0 auto;
+        }
 
+      }
       .chatIcons {
         display: flex;
         gap: 10px;
@@ -273,13 +284,20 @@
         .message {
           display: flex;
           gap: 20px;
-          margin-bottom: 20px;
+          margin-bottom: 0.1rem;
 
           .messageInfo {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
             color: gray;
             font-weight: 300;
+
+            span {
+              font-size: 0.8rem;
+              font-weight: 500;
+            }
 
             img {
               width: 40px;
@@ -299,6 +317,7 @@
               padding: 10px 20px;
               border-radius: 0px 10px 10px 10px;
               max-width: max-content;
+              box-shadow: #38393a 0.5px 0.5px;
             }
 
             img {

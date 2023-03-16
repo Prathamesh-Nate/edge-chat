@@ -6,10 +6,12 @@ import { ChatContext } from "../context/ChatContext";
 function ChatHome() {
   const { connectWallet } = useContext(ChatContext);
 
+  
   useEffect(() => {
     connectWallet();
   }, []);
   return (
+    
     <div className="home">
       <div className="container">
         <Sidebar />
