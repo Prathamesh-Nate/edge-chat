@@ -256,7 +256,8 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px;
-        color: lightgray;
+        color: #fff;
+
         
         span {
           font-size: 1.1rem;
@@ -347,13 +348,15 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        background-color: #5d5b8d;
 
         input {
           width: 100%;
           border: none;
           outline: none;
-          color: #2f2d52;
+          color: #ffffff;
           font-size: 18px;
+          background-color: #5d5b8d;
 
           &::placeholder {
             color: lightgray;
@@ -373,9 +376,12 @@
           button {
             border: none;
             padding: 10px 15px;
-            color: white;
-            background-color: #8da4f1;
+            color: #2f2d52;
+            background-color: #f9b17a;
+            font-family: Oxygen;
             cursor: pointer;
+            font-weight: 700;
+            border-radius: 0.5rem;
           }
         }
       }
