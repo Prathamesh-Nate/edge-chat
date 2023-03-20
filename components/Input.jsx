@@ -11,13 +11,12 @@ const Input = () => {
     <div className="input">
       <input
         required
-        id="chatInput"
         type="text"
         placeholder="Type something..."
         onChange={(e) => setMessageInput(e.target.value)}
       />
       <div className="send">
-        <button onClick={sendMessage} onclick="document.getElementById('chatInput').value = ''">Send</button>
+        <button onClick={sendMessage}>Send</button>
       </div>
     </div>
   );
