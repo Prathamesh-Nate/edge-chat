@@ -8,8 +8,8 @@ const Input = () => {
     useContext(ChatContext);
 
   return (
-    <div className="input">
-      <input
+    <div className="chat-input">
+  <input
         required
         type="text"
         placeholder="Type something..."
@@ -18,7 +18,7 @@ const Input = () => {
       <div className="send">
         <button onClick={sendMessage}>Send</button>
       </div>
-    </div>
+</div>
   );
 };
 

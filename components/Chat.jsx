@@ -6,8 +6,8 @@ import Input from "./Input";
 const Chat = () => {
   const { selectedUserName } = useContext(ChatContext);
   return (
-    <div className="chat">
-      <div className="chatInfo">
+    <div className="chat-ui">
+      <div className="chat-info">
         <span>{selectedUserName}</span>
       </div>
       <Message />

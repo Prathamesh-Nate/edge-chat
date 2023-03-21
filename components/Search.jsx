@@ -9,7 +9,7 @@ const Search = () => {
   return (
     <div className="search">
       <div className="searchForm">
-        <form onSubmit={searchAndAddFriend}>
+        <form className="form" onSubmit={searchAndAddFriend}>
           <input
             required
             type="text"

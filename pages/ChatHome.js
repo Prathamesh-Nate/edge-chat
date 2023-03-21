@@ -10,8 +10,8 @@ function ChatHome() {
     connectWallet();
   }, []);
   return (
-    <div className="home">
-      <div className="container">
+    <div className="card">
+      <div className="content-container">
         <Sidebar />
         <Chat />
       </div>

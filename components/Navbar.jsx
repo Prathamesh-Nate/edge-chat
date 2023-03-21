@@ -5,10 +5,9 @@ const Navbar = () => {
   const { networkError, isUserLoggedIn, logoutUser } = useContext(ChatContext);
   return (
     <div className="navbar">
-      <span className="logo">EdgeChat</span>
-      <div className="user">
-        <button onClick={logoutUser}>logout</button>
-      </div>
+      <span className="navbar-logo">EdgeChat</span>
+        <button className="logout-btn" onClick={logoutUser}>Logout</button>
+      
     </div>
   );
 };

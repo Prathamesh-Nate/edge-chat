@@ -25,29 +25,31 @@ const Login = () => {
       {!isUserLoggedIn && !networkError ? (
         <Home />
       ) : (
-        <div className="formContainer">
-          <div className="formWrapper">
-            <span className="logo">EdgeChat</span>
-            <span className="title">Login</span>
-            <form onSubmit={loginUser}>
-              <input
+        <div className="form-container">
+          <div className="bg-[#2d3250] px-10 py-14 rounded-xl flex flex-col gap-2 items-center">
+            <span className="text-white font-bold text-2xl">EdgeChat</span>
+            <span className="text-white text-lg">Login</span>
+            <form className="flex flex-col gap-4" onSubmit={loginUser}>
+              <input 
+                className="form-input"
                 required
                 type="text"
                 placeholder="Username"
                 onChange={(e) => setUsername(e.target.value)}
               />
-              <input
+              <input 
+                className="form-input"
                 required
                 type="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button type="submit">Sign In</button>
+              <button className="btn btn-primary" type="submit">Sign In</button>
               {err && <span>Something went wrong</span>}
             </form>
-            <p>
+            <p className="py-5 px-5">
               Don&apos;t have an account?{" "}
-              <Link href="/Register">Register</Link>
+              <span className="text-violet-400"><Link href="/Register">Register</Link></span>
             </p>
           </div>
         </div>

@@ -1,8 +1,165 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
+
+@layer components {
+
+  /* Card Container  */
+  .card {
+    @apply bg-[#17181f] h-[100vh] flex items-center justify-center
+  }
+
+  /* Container */
+  .content-container {
+    @apply border border-solid border-white w-[65%] h-[80%] flex overflow-hidden rounded-lg
+  }
+
+  /* SideBar  */
+  .content-sidebar {
+    @apply flex-1 bg-[#3e3c61] relative
+  }
+
+/* Navbar.jsx -- */
+   
+  .navbar {
+    @apply flex items-center bg-[#2f2d52] h-12 p-3 justify-between text-[#ddddf7]
+  }
+
+  .navbar-logo {
+    @apply font-bold
+  }
+
+  .logout-btn {
+    @apply bg-[#5d5b8d] text-white p-2 text-base font-medium font-mono border-none rounded-md cursor-pointer
+  }
+
+  /* Search.jsx */
+
+  .search {
+    @apply border-b-[1px]
+  }
+
+  form.form {
+    @apply flex justify-between items-center p-2 gap-2
+  }
+  .form input {
+    @apply input bg-[#2f2d52] h-8 max-w-md w-full
+  }
+  .form button {
+    @apply bg-[#2f2d52] hover:bg-blue-700 text-white font-medium py-1 px-4 rounded-full
+  }
+
+/* Chats.jsx */
+
+.chats {
+  @apply flex flex-col
+}
+
+.user-chat {
+  @apply flex gap-3 items-center py-2 px-3 border-b-[1px] border-gray-500 hover:bg-[#2f2d52] cursor-pointer 
+}
+
+.user-chat img {
+@apply w-10 rounded-full
+}
+
+.user-name {
+  @apply text-base font-medium font-sans text-white
+}
+
+/* Cht.jsx Header */
+
+.chat-ui {
+  @apply flex-[2]
+}
+
+.chat-info {
+  @apply flex items-center justify-center bg-[#2f2d52] p-5 border-l-[1px] 
+}
+
+.chat-info span {
+  @apply text-white font-medium font-sans
+}
+
+/* Chat.jsx Input Area */
+
+.chat-input {
+  @apply bg-[#3e3c61] flex h-12 p-3 items-center justify-between
+ }
+
+.chat-input input {
+  @apply w-full border-none outline-none text-[#2f2d52] text-lg
+}
+.send {
+  @apply flex items-center gap-3
+}
+.send button {
+  @apply border-none py-2 px-3 text-white bg-[#2f2d52] cursor-pointer
+}
+ 
+ .form-container {
+    @apply bg-[#161e31] h-[100vh] flex items-center justify-center
+  }
+
+  .form-input {
+    @apply input input-bordered input-primary w-full max-w-lg
+  }
+
+  
+
+  .user-heading {
+    @apply h-12 bg-[#5d5b8d] flex items-center justify-between p-3 text-[#d3d3d3]
+  }
+  .messages { 
+    @apply bg-[#b2b2d1] p-[10px] h-[calc(100%-100px)] overflow-hidden
+  }
+
+  .message {
+    @apply flex gap-[20px] mb-[20px]
+  }
+  
+  .messages .message .messageInfo {
+    @apply flex flex-col text-gray-600 font-light
+  }
+
+  .messages  .message .messageInfo img {
+    @apply w-10 h-10 rounded-full
+  }
+
+  .messages  .message .messageContent { 
+    @apply max-w-[80%] flex gap-[10px] 
+  }
+
+  .messageContent .message.owner {
+    @apply flex flex-row-reverse
+  }
+  
+  .message.false {
+    @apply flex items-center
+  }
+
+  .messages  .message.false .messageContent p {
+    @apply bg-white p-2 max-w-max rounded-[10px] rounded-tl-none text-black shadow-md shadow-gray-500
+  }
+
+ .message.owner {
+  @apply flex flex-row-reverse items-center
+ }
+
+ .message.owner .messageContent p {
+  @apply bg-[#8da4f1] text-white rounded-[10px] rounded-tr-none p-2 shadow-md shadow-gray-500
+ }
+
+ .time-text {
+  @apply text-xs
+ }
 
 
+
+ 
+
+
+}
 html,
 body {
   padding: 0;

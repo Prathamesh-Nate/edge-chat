@@ -51,7 +51,7 @@ const Message = ({ message }) => {
                 src="https://png.pngitem.com/pimgs/s/130-1300253_female-user-icon-png-download-user-image-color.png"
                 alt=""
               />
-              <span>
+              <span className="time-text">
                 {new Date(
                   item.timestamp.toNumber() * 1000
                 ).toLocaleTimeString()}
@@ -60,6 +60,7 @@ const Message = ({ message }) => {
             <div className="messageContent">
               <p>{item.msg}</p>
             </div>
+            
           </div>
         </>
       ))}

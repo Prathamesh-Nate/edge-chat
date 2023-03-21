@@ -23,7 +23,7 @@ const Chats = () => {
       {friendsList.map((item) => (
         <>
           <div
-            className="userChat"
+            className="user-chat"
             key={item.pubkey}
             onClick={() => {
               showMessages(item.pubkey);
@@ -34,7 +34,7 @@ const Chats = () => {
               src="https://png.pngitem.com/pimgs/s/130-1300253_female-user-icon-png-download-user-image-color.png"
               alt=""
             />
-            <div className="userChatInfo">
+            <div className="user-name">
               <span>{item.name}</span>
             </div>
           </div>
