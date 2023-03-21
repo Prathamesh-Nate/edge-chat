@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  
+  .messages::-webkit-scrollbar {
+      width: 15px;
+      height: 15px;
+    }
+  
+    .messages::-webkit-scrollbar-track {
+      border-radius: 100vh;
+      background: #3e3c61;
+    }
+  
+    .messages::-webkit-scrollbar-thumb {
+      background: #5d5b8d;
+      border-radius: 100vh;
+      border: 1px solid #f6f7ed;
+    }
+  
+    .messages::-webkit-scrollbar-thumb:hover {
+      background: #2f2d52;
+    }
+  
+}
+
 @layer components {
 
   /* Card Container  */
@@ -108,7 +132,7 @@
     @apply h-12 bg-[#5d5b8d] flex items-center justify-between p-3 text-[#d3d3d3]
   }
   .messages { 
-    @apply bg-[#b2b2d1] p-[10px] overflow-y-scroll h-[calc(100%-102px)]
+    @apply bg-[#b2b2d1] p-[10px] overflow-y-scroll h-[calc(100%-102px)] 
   }
 
   .message {
@@ -116,7 +140,7 @@
   }
   
   .messages .message .messageInfo {
-    @apply flex flex-col text-gray-600 font-light
+    @apply flex flex-col text-gray-600 font-light items-center
   }
 
   .messages  .message .messageInfo img {
@@ -148,7 +172,7 @@
  }
 
  .time-text {
-  @apply text-xs
+  @apply text-xs font-mono
  }
 
 
