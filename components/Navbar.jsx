@@ -4,10 +4,9 @@ import { ChatContext } from "../context/ChatContext";
 const Navbar = () => {
   const { networkError, isUserLoggedIn, logoutUser } = useContext(ChatContext);
   return (
-    <div className="navbar">
+    <div className="main-navigation">
       <span className="navbar-logo">EdgeChat</span>
         <button className="logout-btn" onClick={logoutUser}>Logout</button>
-      
     </div>
   );
 };

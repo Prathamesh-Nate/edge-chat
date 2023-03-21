@@ -10,6 +10,7 @@ const Chats = () => {
     getMyFriendList,
     showMessages,
     setSelectedUserName,
+    messagesList,
   } = useContext(ChatContext);
 
   useEffect(() => {
@@ -36,6 +37,10 @@ const Chats = () => {
             />
             <div className="user-name">
               <span>{item.name}</span>
+              {messagesList.map((item,index,messagesList) => {
+              if (index+1 === messagesList.length) {
+              console.log(item.msg)}
+              })}
             </div>
           </div>
         </>

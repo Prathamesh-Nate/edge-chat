@@ -15,9 +15,9 @@ const Input = () => {
         placeholder="Type something..."
         onChange={(e) => setMessageInput(e.target.value)}
       />
-      <div className="send">
+      
         <button onClick={sendMessage}>Send</button>
-      </div>
+      
 </div>
   );
 };

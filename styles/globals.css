@@ -21,16 +21,16 @@
 
 /* Navbar.jsx -- */
    
-  .navbar {
-    @apply flex items-center bg-[#2f2d52] h-12 p-3 justify-between text-[#ddddf7]
+  .main-navigation {
+    @apply flex items-center bg-[#2f2d52] p-1 justify-between text-[#ddddf7] 
   }
 
   .navbar-logo {
-    @apply font-bold
+    @apply font-bold p-2
   }
 
   .logout-btn {
-    @apply bg-[#5d5b8d] text-white p-2 text-base font-medium font-mono border-none rounded-md cursor-pointer
+    @apply bg-[#5d5b8d] text-white text-base font-medium font-mono border-none rounded-md cursor-pointer p-2
   }
 
   /* Search.jsx */
@@ -74,27 +74,24 @@
 }
 
 .chat-info {
-  @apply flex items-center justify-center bg-[#2f2d52] p-5 border-l-[1px] 
+  @apply flex items-center justify-center bg-[#2f2d52] border-l-[1px] text-white h-12
 }
 
-.chat-info span {
-  @apply text-white font-medium font-sans
-}
 
 /* Chat.jsx Input Area */
 
 .chat-input {
-  @apply bg-[#3e3c61] flex h-12 p-3 items-center justify-between
+  @apply bg-[#3e3c61] flex justify-between items-center p-2 gap-2
  }
 
 .chat-input input {
-  @apply w-full border-none outline-none text-[#2f2d52] text-lg
+  @apply bg-[#3e3c61] text-white w-full outline-none
 }
 .send {
   @apply flex items-center gap-3
 }
 .send button {
-  @apply border-none py-2 px-3 text-white bg-[#2f2d52] cursor-pointer
+  @apply border-none py-2 px-3 text-white bg-[#2f2d52] cursor-pointer rounded-full
 }
  
  .form-container {
@@ -111,11 +108,11 @@
     @apply h-12 bg-[#5d5b8d] flex items-center justify-between p-3 text-[#d3d3d3]
   }
   .messages { 
-    @apply bg-[#b2b2d1] p-[10px] h-[calc(100%-100px)] overflow-hidden
+    @apply bg-[#b2b2d1] p-[10px] overflow-y-scroll h-[calc(100%-95px)]
   }
 
   .message {
-    @apply flex gap-[20px] mb-[20px]
+    @apply flex gap-[10px] mb-[20px]
   }
   
   .messages .message .messageInfo {
