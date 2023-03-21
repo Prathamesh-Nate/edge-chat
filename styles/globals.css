@@ -81,17 +81,17 @@
 /* Chat.jsx Input Area */
 
 .chat-input {
-  @apply bg-[#3e3c61] flex justify-between items-center p-2 gap-2
+  @apply bg-[#3e3c61] flex justify-between items-center px-2 py-2 gap-1 border-l-[1px] 
  }
 
 .chat-input input {
-  @apply bg-[#3e3c61] text-white w-full outline-none
+  @apply bg-[#232149] text-white w-full max-w-screen-lg outline-none rounded-full px-5 p-2
 }
-.send {
-  @apply flex items-center gap-3
-}
-.send button {
-  @apply border-none py-2 px-3 text-white bg-[#2f2d52] cursor-pointer rounded-full
+/* .send {
+  @apply flex items-center gap-3 
+} */
+.chat-input button {
+  @apply border-none py-2 px-3 text-white bg-[#232149] cursor-pointer rounded-full
 }
  
  .form-container {
@@ -108,7 +108,7 @@
     @apply h-12 bg-[#5d5b8d] flex items-center justify-between p-3 text-[#d3d3d3]
   }
   .messages { 
-    @apply bg-[#b2b2d1] p-[10px] overflow-y-scroll h-[calc(100%-95px)]
+    @apply bg-[#b2b2d1] p-[10px] overflow-y-scroll h-[calc(100%-102px)]
   }
 
   .message {
