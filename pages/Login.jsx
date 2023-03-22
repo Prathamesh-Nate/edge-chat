@@ -14,6 +14,7 @@ const Login = () => {
     setUsername,
     setPassword,
     loginUser,
+    showMessage,
   } = useContext(ChatContext);
 
   useEffect(() => {
@@ -51,6 +52,7 @@ const Login = () => {
               Don&apos;t have an account?{" "}
               <span className="text-violet-400"><Link href="/Register">Register</Link></span>
             </p>
+            {showMessage && <p>Please wait while we process your request...</p>}
           </div>
         </div>
       )}

@@ -10,6 +10,7 @@ export const ChatProvider = ({ children }) => {
   const [correctNetwork, setCorrectNetwork] = useState(false);
   const [networkError, setNetworkError] = useState(false);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
   const [currentAccount, setCurrentAccount] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -79,6 +80,7 @@ export const ChatProvider = ({ children }) => {
 
   // User LogIn from front-end onto the blockchain
   const loginUser = async (event) => {
+     setShowMessage(true);
     event.preventDefault();
     try {
       console.log("User LogIn");
@@ -102,15 +104,19 @@ export const ChatProvider = ({ children }) => {
         const [isUserLoggedIn] = await event.args;
         console.log(isUserLoggedIn);
         if (isUserLoggedIn) {
+          setShowMessage(false);
           console.log("User LoggedIn successfully");
           Router.push("/ChatHome");
         } else {
+          setShowMessage(false);
           alert("User LoggedIn failed");
         }
       } else {
+        setShowMessage(false);
         alert("Please connect to MetaMask");
       }
     } catch (error) {
+      setShowMessage(false);
       console.log("Error: ", error);
     }
   };
@@ -318,6 +324,8 @@ export const ChatProvider = ({ children }) => {
         sendMessage,
         setSelectedUserName,
         selectedUserName,
+        showMessage,
+        setShowMessage,
       }}
     >
       {children}
