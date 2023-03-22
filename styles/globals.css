@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,11 +14,11 @@
   
     .messages::-webkit-scrollbar-track {
       border-radius: 100vh;
-      background: #3e3c61;
+      background: #431199;
     }
   
     .messages::-webkit-scrollbar-thumb {
-      background: #5d5b8d;
+      background: #661ae6;
       border-radius: 100vh;
       border: 1px solid #f6f7ed;
     }
@@ -35,18 +38,18 @@
 
   /* Container */
   .content-container {
-    @apply border border-solid border-white w-[65%] h-[80%] flex overflow-hidden rounded-lg
+    @apply border border-solid border-purple-600 w-[65%] h-[80%] flex overflow-hidden rounded-lg
   }
 
   /* SideBar  */
   .content-sidebar {
-    @apply flex-1 bg-[#3e3c61] relative
+    @apply flex-1 bg-[#121212] relative
   }
 
 /* Navbar.jsx -- */
    
   .main-navigation {
-    @apply flex items-center bg-[#2f2d52] p-1 justify-between text-[#ddddf7] 
+    @apply flex items-center bg-[#661ae6] p-1 justify-between text-[#ddddf7] 
   }
 
   .navbar-logo {
@@ -54,7 +57,7 @@
   }
 
   .logout-btn {
-    @apply bg-[#5d5b8d] text-white text-base font-medium font-mono border-none rounded-md cursor-pointer p-2
+    @apply bg-[#431199] text-white text-base font-medium font-mono border-none rounded-md cursor-pointer p-2
   }
 
   /* Search.jsx */
@@ -67,10 +70,10 @@
     @apply flex justify-between items-center p-2 gap-2
   }
   .form input {
-    @apply input bg-[#2f2d52] h-8 max-w-md w-full
+    @apply input bg-[#5717c8] h-8 max-w-md w-full
   }
   .form button {
-    @apply bg-[#2f2d52] hover:bg-blue-700 text-white font-medium py-1 px-4 rounded-full
+    @apply bg-[#431199] hover:bg-blue-700 text-white font-medium py-1 px-4 rounded-full
   }
 
 /* Chats.jsx */
@@ -80,7 +83,7 @@
 }
 
 .user-chat {
-  @apply flex gap-3 items-center py-2 px-3 border-b-[1px] border-gray-500 hover:bg-[#2f2d52] cursor-pointer 
+  @apply flex gap-3 items-center py-2 px-3 border-b-[1px] border-purple-600 hover:bg-[#2f2d52] cursor-pointer 
 }
 
 .user-chat img {
@@ -94,28 +97,32 @@
 /* Cht.jsx Header */
 
 .chat-ui {
-  @apply flex-[2]
+  @apply flex-[2] 
 }
 
 .chat-info {
-  @apply flex items-center justify-center bg-[#2f2d52] border-l-[1px] text-white h-12
+  @apply flex items-center justify-center bg-[#661ae6] border-l-[1px] text-white h-12
+}
+
+.chat-info span {
+  @apply font-sans
 }
 
 
 /* Chat.jsx Input Area */
 
 .chat-input {
-  @apply bg-[#3e3c61] flex justify-between items-center px-2 py-2 gap-1 border-l-[1px] 
+  @apply bg-[#661ae6] flex justify-between items-center px-2 py-2 gap-1 border-l-[1px] 
  }
 
 .chat-input input {
-  @apply bg-[#232149] text-white w-full max-w-screen-lg outline-none rounded-full px-5 p-2
+  @apply bg-[#431199] text-white w-full max-w-screen-lg outline-none rounded-full px-5 p-2
 }
 /* .send {
   @apply flex items-center gap-3 
 } */
 .chat-input button {
-  @apply border-none py-2 px-3 text-white bg-[#232149] cursor-pointer rounded-full
+  @apply border-none py-2 px-3 text-white bg-[#431199] cursor-pointer rounded-full
 }
  
  .form-container {

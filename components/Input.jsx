@@ -10,13 +10,13 @@ const Input = () => {
   return (
     <div className="chat-input">
   <input
+        id="inputArea"
         required
         type="text"
         placeholder="Type something..."
         onChange={(e) => setMessageInput(e.target.value)}
       />
-      
-        <button onClick={sendMessage}>Send</button>
+        <button id='sendButton'onClick={sendMessage}>Send</button>
       
 </div>
   );
