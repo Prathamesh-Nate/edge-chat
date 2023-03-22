@@ -20,6 +20,7 @@ export const ChatProvider = ({ children }) => {
   const [searchAccount, setSearchAccount] = useState("");
   const [friendsList, setFriendsList] = useState([]);
   const [messagesList, setMessagesList] = useState([]);
+  const [showSendButton, setShowSendButton] = useState(false);
   // Calls Metamask to connect wallet on clicking Connect Wallet button
   const connectWallet = async () => {
     try {
@@ -229,23 +230,29 @@ export const ChatProvider = ({ children }) => {
   // Show friends Messages to front-end from the blockchain
   const sendMessage = async (friendAddr) => {
     try {
-      console.log("Send Message to Friends");
+      let input = document.querySelector('#input-field');
       const { ethereum } = window;
-      if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const chatContract = new ethers.Contract(
-          ChatContractAddress,
-          ChatAbi.abi,
-          signer
-        );
-
-        // Add friend to the current user.
-        await chatContract.sendMessage(selectedAddr, messageInput);
-      } else {
-        alert("Please connect to MetaMask");
+      if(input.value) { 
+        if (ethereum) {
+          const provider = new ethers.providers.Web3Provider(ethereum);
+          const signer = provider.getSigner();
+          const chatContract = new ethers.Contract(
+            ChatContractAddress,
+            ChatAbi.abi,
+            signer
+          );
+  
+          // Add friend to the current user.
+          await chatContract.sendMessage(selectedAddr, messageInput);
+          //clear input text area
+          input.value ='';
+        } else {
+          //don't clear input text area
+          alert("Please connect to MetaMask");
+        }
       }
     } catch (error) {
+      //don't clear input text area
       console.log("Error: ", error);
     }
   };
@@ -297,9 +304,22 @@ export const ChatProvider = ({ children }) => {
     }
   };
 
+  const handleMessageInput = (e) => {
+    const messageValue = e.target.value;
+    if(messageValue) {
+      setMessageInput(messageValue);
+      setShowSendButton(true);
+      console.log('messageValue: '+messageValue);
+    } else{
+      setShowSendButton(false);
+    }
+  }
+
   return (
     <ChatContext.Provider
       value={{
+        handleMessageInput,
+        
         correctNetwork,
         setCorrectNetwork,
         networkError,
@@ -326,6 +346,8 @@ export const ChatProvider = ({ children }) => {
         selectedUserName,
         showMessage,
         setShowMessage,
+        showSendButton,
+        setShowSendButton,
       }}
     >
       {children}
