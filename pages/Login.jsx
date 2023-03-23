@@ -26,7 +26,7 @@ const Login = () => {
         <Home />
       ) : (
         <div className="form-container">
-          <div className="bg-[#2d3250] px-10 py-14 rounded-xl flex flex-col gap-2 items-center">
+          <div className="bg-[#2d3250] px-10 py-8 rounded-xl flex flex-col gap-2 items-center">
             <span className="text-white font-bold text-2xl">EdgeChat</span>
             <span className="text-white text-lg">Login</span>
             <form className="flex flex-col gap-4" onSubmit={loginUser}>
@@ -51,6 +51,9 @@ const Login = () => {
               Don&apos;t have an account?{" "}
               <span className="text-violet-400"><Link href="/Register">Register</Link></span>
             </p>
+
+
+
           </div>
         </div>
       )}

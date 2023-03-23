@@ -12,7 +12,8 @@ module.exports = {
     
     extend: {
       fontFamily: {
-        'sans': ['Roboto', ],
+        'sans': ['Montserrat'],
+        'serif': ['Raleway'],
       }
     },
   },
