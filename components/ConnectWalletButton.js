@@ -1,7 +1,7 @@
 const ConnectWalletButton = ({ connectWallet }) => (
   <div className="form-container">
     <button
-      className="bg-[#102770] text-white p-6 rounded-xl font-bold text-2xl cursor-pointer outline outline-1 outline-red-300"
+      className="btn btn-wide btn-primary "
       // Add an onClick functionality
       onClick={connectWallet}
     >

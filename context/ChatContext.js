@@ -38,9 +38,29 @@ export const ChatProvider = ({ children }) => {
       console.log("Connected to " + chainId);
       const beresheetChainId = "0x7e6" || "0x7e5";
       if (chainId !== beresheetChainId) {
-        console.log("Please connect to Beresheet Test Network");
-        setCorrectNetwork(false);
-        setNetworkError(true);
+        try {
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [
+              {
+                chainId: '0x7e6',
+                chainName: 'BereEVM',
+                rpcUrls: ['https://beresheet-evm.jelliedowl.net'],
+                nativeCurrency: {
+                  name: 'Testnet EDG',
+                  symbol: 'tEDG',
+                  decimals: 18,
+                },
+                blockExplorerUrls: ['https://testnet.edgscan.live/'],
+              },
+            ],
+          }); 
+          connectWallet();
+        } catch (err) {
+          console.log("Please connect to Beresheet Test Network");
+          setCorrectNetwork(false);
+          setNetworkError(true);
+        }
         return;
       } else {
         setCorrectNetwork(true);
