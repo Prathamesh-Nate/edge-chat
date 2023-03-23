@@ -16,11 +16,8 @@ const Input = () => {
         placeholder="Type something..."
         onChange={handleMessageInput}
       />
-      {showSendButton && <button onClick={sendMessage}>Send</button>}
-      
-      
-      
-</div>
+      {showSendButton && <button onClick={sendMessage}>Send</button>}     
+    </div>
   );
 };
 

@@ -3,14 +3,20 @@ import Router from "next/router";
 import { ChatContractAddress } from "../config";
 import ChatAbi from "../backend/build/contracts/ChatContract.json";
 import { ethers } from "ethers";
+import { toast } from 'react-toastify'; //Use this in place of alert()
 
 export const ChatContext = createContext();
 
 export const ChatProvider = ({ children }) => {
+  const INFO = 'info';
+  const WARNING = 'warning';
+  const ERROR = 'error';
+  const SUCCESS = 'success';
   const [correctNetwork, setCorrectNetwork] = useState(false);
   const [networkError, setNetworkError] = useState(false);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  const [showSendButton, setShowSendButton] = useState(false);
   const [currentAccount, setCurrentAccount] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +26,6 @@ export const ChatProvider = ({ children }) => {
   const [searchAccount, setSearchAccount] = useState("");
   const [friendsList, setFriendsList] = useState([]);
   const [messagesList, setMessagesList] = useState([]);
-  const [showSendButton, setShowSendButton] = useState(false);
   // Calls Metamask to connect wallet on clicking Connect Wallet button
   const connectWallet = async () => {
     try {
@@ -184,22 +189,22 @@ export const ChatProvider = ({ children }) => {
           await chatContract
             .addFriend(searchAccount, friendUsername)
             .then((res) => {
-              alert("Friend Added successfully");
+              createToastMessage(`Friend Added successfully`, SUCCESS);
             });
         }
         //If user does not exist and not adding self as friend then throw error.
         else {
           if (!boolcheckUser) {
-            alert("User doesn't exist");
+            createToastMessage(`User doesn't exist`, WARNING);
           } else {
-            alert("Can't add yourself as friend");
+            createToastMessage(`Can't add yourself as friend`, WARNING);
           }
         }
       } else {
-        alert("Please connect to MetaMask");
+        createToastMessage(`Please connect to MetaMask.`, INFO);
       }
     } catch (error) {
-      alert("Error: Users are Already Friends! ", error);
+      createToastMessage(`Error occurred while processing your request.`, ERROR);
     }
   };
 
@@ -309,17 +314,49 @@ export const ChatProvider = ({ children }) => {
     if(messageValue) {
       setMessageInput(messageValue);
       setShowSendButton(true);
-      console.log('messageValue: '+messageValue);
     } else{
       setShowSendButton(false);
+    }
+  }
+
+  const handleSearchInput = (e) => {
+    const searchRegex = /^0x[a-zA-Z0-9]{40}$/;
+    let searchValue = e.target.value;
+    const isValidAddress = searchRegex.test(searchValue);
+    console.log('isValidAddress: '+isValidAddress);
+    if(isValidAddress){
+      setSearchAccount(searchValue)
+    }
+    else
+    setSearchAccount('');
+  }
+
+  function createToastMessage(message, type) {
+    switch (type) {
+      case INFO:
+        toast.info(message);
+        break;
+
+      case SUCCESS:
+        toast.success(message);
+        break;
+
+      case WARNING:
+        toast.warning(message);
+        break;
+
+      case ERROR:
+        toast.error(message);
+        break;
+
+      default:
+        toast(message);
     }
   }
 
   return (
     <ChatContext.Provider
       value={{
-        handleMessageInput,
-        
         correctNetwork,
         setCorrectNetwork,
         networkError,
@@ -348,6 +385,9 @@ export const ChatProvider = ({ children }) => {
         setShowMessage,
         showSendButton,
         setShowSendButton,
+        handleMessageInput,
+        handleSearchInput,
+        createToastMessage,
       }}
     >
       {children}
