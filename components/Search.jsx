@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ChatContext } from "../context/ChatContext";
 
 const Search = () => {
-  const { setSearchAccount, searchAndAddFriend } = useContext(ChatContext);
+  const { setSearchAccount, searchAndAddFriend, handleSearchInput } = useContext(ChatContext);
 
   return (
     <div className="search">
@@ -14,7 +14,7 @@ const Search = () => {
             required
             type="text"
             placeholder="Enter Address to Add Friend"
-            onChange={(e) => setSearchAccount(e.target.value)}
+            onChange={handleSearchInput}
           />
           <button type="submit">Add</button>
         </form>

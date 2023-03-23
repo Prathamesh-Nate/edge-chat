@@ -4,21 +4,20 @@ import Link from "next/link";
 import { ChatContext } from "../context/ChatContext";
 
 const Input = () => {
-  const { setSearchAccount, searchAndAddFriend, setMessageInput, sendMessage } =
+  const { setSearchAccount, searchAndAddFriend, setMessageInput, sendMessage, handleMessageInput,showSendButton } =
     useContext(ChatContext);
 
   return (
     <div className="chat-input">
-  <input
-        id="inputArea"
+      <input
+        id="input-field"
         required
         type="text"
         placeholder="Type something..."
-        onChange={(e) => setMessageInput(e.target.value)}
+        onChange={handleMessageInput}
       />
-        <button id='sendButton'onClick={sendMessage}>Send</button>
-      
-</div>
+      {showSendButton && <button onClick={sendMessage}>Send</button>}     
+    </div>
   );
 };
 
