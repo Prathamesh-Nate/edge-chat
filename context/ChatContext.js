@@ -3,13 +3,20 @@ import Router from "next/router";
 import { ChatContractAddress } from "../config";
 import ChatAbi from "../backend/build/contracts/ChatContract.json";
 import { ethers } from "ethers";
+import { toast } from 'react-toastify'; //Use this in place of alert()
 
 export const ChatContext = createContext();
 
 export const ChatProvider = ({ children }) => {
+  const INFO = 'info';
+  const WARNING = 'warning';
+  const ERROR = 'error';
+  const SUCCESS = 'success';
   const [correctNetwork, setCorrectNetwork] = useState(false);
   const [networkError, setNetworkError] = useState(false);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+  const [showSendButton, setShowSendButton] = useState(false);
   const [currentAccount, setCurrentAccount] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -94,6 +101,7 @@ export const ChatProvider = ({ children }) => {
 
   // User LogIn from front-end onto the blockchain
   const loginUser = async (event) => {
+     setShowMessage(true);
     event.preventDefault();
     try {
       const { ethereum } = window;
@@ -115,14 +123,18 @@ export const ChatProvider = ({ children }) => {
         const event = rc.events.find((event) => event.event === "LoginUser");
         const [isUserLoggedIn] = await event.args;
         if (isUserLoggedIn) {
+          console.log("User LoggedIn successfully");
           Router.push("/ChatHome");
         } else {
+          setShowMessage(false);
           alert("User LoggedIn failed");
         }
       } else {
+        setShowMessage(false);
         alert("Please connect to MetaMask");
       }
     } catch (error) {
+      console.log("Error: ", error);
     }
   };
 
@@ -183,22 +195,22 @@ export const ChatProvider = ({ children }) => {
           await chatContract
             .addFriend(searchAccount, friendUsername)
             .then((res) => {
-              alert("Friend Added successfully");
+              createToastMessage(`Friend Added successfully`, SUCCESS);
             });
         }
         //If user does not exist and not adding self as friend then throw error.
         else {
           if (!boolcheckUser) {
-            alert("User doesn't exist");
+            createToastMessage(`User doesn't exist`, WARNING);
           } else {
-            alert("Can't add yourself as friend");
+            createToastMessage(`Can't add yourself as friend`, WARNING);
           }
         }
       } else {
-        alert("Please connect to MetaMask");
+        createToastMessage(`Please connect to MetaMask.`, INFO);
       }
     } catch (error) {
-      alert("Error: Users are Already Friends! ", error);
+      createToastMessage(`Error occurred while processing your request.`, ERROR);
     }
   };
 
@@ -227,22 +239,29 @@ export const ChatProvider = ({ children }) => {
   // Show friends Messages to front-end from the blockchain
   const sendMessage = async (friendAddr) => {
     try {
+      console.log("Send Message to Friends");
       const { ethereum } = window;
-      if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const chatContract = new ethers.Contract(
-          ChatContractAddress,
-          ChatAbi.abi,
-          signer
-        );
-
-        // Add friend to the current user.
-        await chatContract.sendMessage(selectedAddr, messageInput);
-      } else {
-        alert("Please connect to MetaMask");
+      if(input.value) { 
+        if (ethereum) {
+          const provider = new ethers.providers.Web3Provider(ethereum);
+          const signer = provider.getSigner();
+          const chatContract = new ethers.Contract(
+            ChatContractAddress,
+            ChatAbi.abi,
+            signer
+          );
+  
+          // Add friend to the current user.
+          await chatContract.sendMessage(selectedAddr, messageInput);
+          //clear input text area
+          input.value ='';
+        } else {
+          //don't clear input text area
+          alert("Please connect to MetaMask");
+        }
       }
     } catch (error) {
+      console.log("Error: ", error);
     }
   };
 
@@ -289,6 +308,51 @@ export const ChatProvider = ({ children }) => {
     }
   };
 
+  const handleMessageInput = (e) => {
+    const messageValue = e.target.value;
+    if(messageValue) {
+      setMessageInput(messageValue);
+      setShowSendButton(true);
+    } else{
+      setShowSendButton(false);
+    }
+  }
+
+  const handleSearchInput = (e) => {
+    const searchRegex = /^0x[a-zA-Z0-9]{40}$/;
+    let searchValue = e.target.value;
+    const isValidAddress = searchRegex.test(searchValue);
+    console.log('isValidAddress: '+isValidAddress);
+    if(isValidAddress){
+      setSearchAccount(searchValue)
+    }
+    else
+    setSearchAccount('');
+  }
+
+  function createToastMessage(message, type) {
+    switch (type) {
+      case INFO:
+        toast.info(message);
+        break;
+
+      case SUCCESS:
+        toast.success(message);
+        break;
+
+      case WARNING:
+        toast.warning(message);
+        break;
+
+      case ERROR:
+        toast.error(message);
+        break;
+
+      default:
+        toast(message);
+    }
+  }
+
   return (
     <ChatContext.Provider
       value={{
@@ -316,6 +380,13 @@ export const ChatProvider = ({ children }) => {
         sendMessage,
         setSelectedUserName,
         selectedUserName,
+        showMessage,
+        setShowMessage,
+        showSendButton,
+        setShowSendButton,
+        handleMessageInput,
+        handleSearchInput,
+        createToastMessage,
       }}
     >
       {children}
