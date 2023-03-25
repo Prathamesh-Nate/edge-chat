@@ -6,7 +6,7 @@ const MESSAGE = `Welcome To EdgeChat`;
 const AnimatedLetters = () => {
     const sentence = MESSAGE.split('');
     return(
-        <div className="animated-letters">
+        <div className="animated-letters font-poppins">
             <h1>
                 {sentence.map((letter, index) => {
                     return(
