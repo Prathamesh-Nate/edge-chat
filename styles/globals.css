@@ -182,8 +182,18 @@
   @apply text-xs font-mono
  }
 
-
-
+ /* AnimatedLetters.jsx*/
+ .animated-letters {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+.animated-letters span{
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 700;
+}
 
  
 
