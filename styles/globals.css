@@ -91,7 +91,7 @@
 }
 
 .user-name {
-  @apply text-base font-medium font-sans text-white
+  @apply text-base font-medium font-poppins text-white
 }
 
 /* Cht.jsx Header */
@@ -105,7 +105,7 @@
 }
 
 .chat-info span {
-  @apply font-sans font-bold
+  @apply font-poppins font-bold
 }
 
 
