@@ -101,7 +101,7 @@
 }
 
 .chat-info {
-  @apply flex items-center justify-center bg-[#661ae6] border-l-[1px] text-white h-12
+  @apply flex items-center justify-center bg-[#661ae6]  text-white h-12
 }
 
 .chat-info span {
