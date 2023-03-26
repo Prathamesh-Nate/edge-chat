@@ -240,7 +240,6 @@ export const ChatProvider = ({ children }) => {
     try {
       console.log("Send Message to Friends");
       const { ethereum } = window;
-      if(input.value) { 
         if (ethereum) {
           const provider = new ethers.providers.Web3Provider(ethereum);
           const signer = provider.getSigner();
@@ -258,7 +257,6 @@ export const ChatProvider = ({ children }) => {
           //don't clear input text area
           alert("Please connect to MetaMask");
         }
-      }
     } catch (error) {
       console.log("Error: ", error);
     }
