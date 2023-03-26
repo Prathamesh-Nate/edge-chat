@@ -27,8 +27,6 @@ const Message = ({ message }) => {
     showMessages();
   }, []);
 
-  console.log(messagesList);
-
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
@@ -45,7 +43,7 @@ const Message = ({ message }) => {
               "owner"
             }`}
           >
-            {console.log(item.sender, "sender", currentAccount, "current")}
+
             <div className="messageInfo">
               <img
                 src="https://png.pngitem.com/pimgs/s/130-1300253_female-user-icon-png-download-user-image-color.png"

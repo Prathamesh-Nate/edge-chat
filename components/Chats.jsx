@@ -17,6 +17,8 @@ const Chats = () => {
     getMyFriendList();
   }, []);
 
+  console.log(friendsList);
+
   return (
     <div className="chats">
       {friendsList.map((item) => (
