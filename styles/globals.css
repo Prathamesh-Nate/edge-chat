@@ -112,7 +112,7 @@
 /* Chat.jsx Input Area */
 
 .chat-input {
-  @apply bg-[#661ae6] flex justify-between items-center px-2 py-2 gap-1 border-l-[1px] 
+  @apply bg-[#661ae6] flex justify-between items-center px-2 py-2 gap-1 
  }
 
 .chat-input input {

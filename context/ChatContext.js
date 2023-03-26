@@ -123,7 +123,6 @@ export const ChatProvider = ({ children }) => {
         const event = rc.events.find((event) => event.event === "LoginUser");
         const [isUserLoggedIn] = await event.args;
         if (isUserLoggedIn) {
-          console.log("User LoggedIn successfully");
           Router.push("/ChatHome");
         } else {
           setShowMessage(false);
